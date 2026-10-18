@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E__NUMBER__ Stills Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: a contact-sheet ledger. One row per shot, still on the left, notes on the right, grouped by scene. Ink on paper. */
+:root {
+  --paper: #fbfaf7;
+  --ink: #111111;
+  --muted: #5d5c58;
+  --rule: #d9d7d0;
+  --wash: #f0eee8;
+  --flag: #111111;
+  --flag-ink: #fbfaf7;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121211; --ink: #ecebe6; --muted: #a09e97; --rule: #33322f; --wash: #1c1c1a; --flag: #ecebe6; --flag-ink: #121211;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121211; --ink: #ecebe6; --muted: #a09e97; --rule: #33322f; --wash: #1c1c1a; --flag: #ecebe6; --flag-ink: #121211;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 1100px; margin: 0 auto; padding-inline: 20px; padding-block: 0 64px; }
+
+.bar { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--ink); }
+.bar-in { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.bar h1 { font: 600 17px/1.2 var(--sans); margin: 0; letter-spacing: 0.01em; }
+.bar .meta { font: 13px var(--mono); color: var(--muted); }
+.bar .spacer { flex: 1; }
+.bar label { font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+button { font: 500 13px var(--sans); background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 8px 14px; border-radius: 3px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--ink); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, .still:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.toast { font: 13px var(--mono); color: var(--muted); min-width: 10ch; }
+
+.intro { max-width: 68ch; color: var(--muted); padding-block: 22px 4px; margin: 0; }
+
+.scene { display: flex; align-items: baseline; gap: 14px; margin: 40px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.scene h2 { font: 600 13px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+.scene span { font: italic 15px var(--serif); color: var(--muted); }
+
+.shot { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+.shot.flagged { box-shadow: inset 4px 0 0 var(--flag); padding-left: 16px; }
+.still { display: block; padding: 0; border: 1px solid var(--rule); background: var(--wash); cursor: zoom-in; width: 100%; aspect-ratio: 9 / 16; max-width: 100%; overflow: hidden; border-radius: 2px; }
+.still img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.still .missing { display: grid; place-items: center; height: 100%; font: 12px var(--mono); color: var(--muted); padding: 12px; text-align: center; }
+
+.body { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.head .id { font: 600 16px var(--mono); }
+.head .time { font: 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 12px var(--mono); border: 1px solid var(--rule); padding: 1px 8px; border-radius: 999px; color: var(--muted); }
+.label { font: 500 11px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.guide { margin: 0; max-width: 68ch; }
+.vo { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.vo blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--ink); font: 16px/1.55 var(--serif); max-width: 68ch; }
+.vo .ts { font: 12px var(--mono); color: var(--muted); display: block; margin-bottom: 2px; }
+.vo .none { color: var(--muted); font-style: italic; }
+details { border-top: 1px dashed var(--rule); padding-top: 8px; }
+summary { cursor: pointer; font: 500 12px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+details p { margin: 8px 0 0; font: 13px/1.6 var(--mono); max-width: 80ch; overflow-wrap: anywhere; }
+
+.fix { display: flex; flex-direction: column; gap: 8px; background: var(--wash); padding: 12px; border-radius: 3px; }
+.fix label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 14px; cursor: pointer; width: fit-content; }
+.fix input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--ink); }
+.fix textarea { width: 100%; min-height: 64px; resize: vertical; font: 14px/1.5 var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 8px 10px; }
+
+dialog { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; }
+dialog::backdrop { background: rgba(0,0,0,0.85); }
+dialog img { display: block; max-width: 96vw; max-height: 90vh; width: auto; height: auto; }
+dialog .cap { color: #eee; font: 13px var(--mono); padding: 8px 2px; display: flex; justify-content: space-between; gap: 12px; }
+dialog button { background: #eee; color: #111; border-color: #eee; }
+
+body.only-flagged .shot:not(.flagged) { display: none; }
+body.only-flagged .scene { display: none; }
+
+@media (max-width: 640px) {
+  .shot { grid-template-columns: 1fr; }
+  .still { max-width: 260px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <h1>Episode __NUMBER__ · __NAME__ · Stills review</h1>
+    <span class="meta" id="meta"></span>
+    <span class="spacer"></span>
+    <label><input type="checkbox" id="only-flagged"> Flagged only</label>
+    <button type="button" id="copy">Copy fix list</button>
+    <button type="button" class="ghost" id="clear">Clear all</button>
+    <span class="toast" id="toast" aria-live="polite"></span>
+  </div>
+</div>
+<div class="wrap">
+  <p class="intro">Each row shows a still beside its shot-list guidance and the voice-over that plays over it. Voice-over lines are placed by estimate, sharing each paragraph’s time by word count, so they may land a beat earlier or later once the read is recorded. Tick “Needs fix” and say what should change. Your notes stay in this browser. When you’re done, press “Copy fix list” and paste it into the thread.</p>
+  <main id="list"></main>
+  <textarea id="copy-fallback" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;top:0;"></textarea>
+</div>
+<dialog id="lightbox">
+  <img id="lb-img" alt="">
+  <div class="cap"><span id="lb-cap"></span><button type="button" id="lb-close">Close</button></div>
+</dialog>
+<script>
+const DATA = /*DATA*/null;
+const KEY = '__KEY__';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} updateMeta(); }
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+
+function updateMeta() {
+  const flagged = DATA.shots.filter(s => state[s.id]?.fix).length;
+  document.getElementById('meta').textContent = `${DATA.shots.length} shots · ${fmt(DATA.total)} · ${flagged} flagged`;
+}
+
+function render() {
+  const list = document.getElementById('list');
+  let scene = null;
+  for (const s of DATA.shots) {
+    if (s.scene !== scene) {
+      scene = s.scene;
+      const h = el('div', 'scene');
+      h.append(el('h2', null, scene), el('span', null, DATA.scenes[scene] || ''));
+      list.append(h);
+    }
+    const st = state[s.id] || (state[s.id] = { fix: false, note: '' });
+    const row = el('section', 'shot' + (st.fix ? ' flagged' : ''));
+    row.id = s.id;
+
+    const btn = el('button', 'still'); btn.type = 'button'; btn.setAttribute('aria-label', 'Enlarge ' + s.id);
+    const img = new Image(); img.src = s.img; img.alt = s.id + ' still'; img.loading = 'lazy';
+    img.onerror = () => { btn.replaceChildren(el('span', 'missing', 'Missing ' + s.img)); };
+    btn.append(img);
+    btn.addEventListener('click', () => openLightbox(s));
+
+    const body = el('div', 'body');
+    const head = el('div', 'head');
+    head.append(el('span', 'id', s.id), el('span', 'time', `${fmt(s.start)}–${fmt(s.end)}`));
+    const chips = el('div', 'chips');
+    chips.append(el('span', 'chip', s.dur + 's'), el('span', 'chip', s.framing), el('span', 'chip', 'motion: ' + s.level.replace('_', ' ')));
+    head.append(chips);
+
+    const g = el('div'); g.append(el('p', 'label', 'Visual guidance'), el('p', 'guide', s.guide));
+
+    const v = el('div'); v.append(el('p', 'label', 'Voice-over'));
+    const vo = el('div', 'vo');
+    if (!s.vo.length) vo.append(el('p', 'none', 'No voice-over over this shot.'));
+    for (const line of s.vo) {
+      const q = el('blockquote');
+      q.append(el('span', 'ts', `≈${fmt(line.start)} · from the [${fmt(line.para)}] paragraph${line.cont ? ' · starts in the previous shot' : ''}`), document.createTextNode(line.text));
+      vo.append(q);
+    }
+    v.append(vo);
+
+    const dp = el('details'); dp.append(el('summary', null, 'Shot prompt'), el('p', null, s.prompt));
+    const dm = el('details'); dm.append(el('summary', null, 'Motion prompt'), el('p', null, s.motion || 'None.'));
+
+    const fix = el('div', 'fix');
+    const lab = el('label'); const cb = el('input'); cb.type = 'checkbox'; cb.id = 'fix-' + s.id; cb.checked = st.fix;
+    lab.htmlFor = cb.id; lab.append(cb, document.createTextNode('Needs fix'));
+    const ta = el('textarea'); ta.id = 'note-' + s.id; ta.placeholder = 'What should change in this still?'; ta.value = st.note;
+    ta.setAttribute('aria-label', 'Fix notes for ' + s.id);
+    cb.addEventListener('change', () => { st.fix = cb.checked; row.classList.toggle('flagged', cb.checked); save(); });
+    ta.addEventListener('input', () => {
+      st.note = ta.value;
+      if (ta.value.trim() && !st.fix) { st.fix = true; cb.checked = true; row.classList.add('flagged'); }
+      save();
+    });
+    fix.append(lab, ta);
+
+    body.append(head, g, v, dp, dm, fix);
+    row.append(btn, body);
+    list.append(row);
+  }
+  updateMeta();
+}
+
+const lb = document.getElementById('lightbox');
+function openLightbox(s) {
+  document.getElementById('lb-img').src = s.img;
+  document.getElementById('lb-img').alt = s.id;
+  document.getElementById('lb-cap').textContent = `${s.id} · ${fmt(s.start)}–${fmt(s.end)}`;
+  if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+}
+document.getElementById('lb-close').addEventListener('click', () => lb.close());
+lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+
+function toast(msg) { const t = document.getElementById('toast'); t.textContent = msg; clearTimeout(toast.t); toast.t = setTimeout(() => t.textContent = '', 3000); }
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const lines = DATA.shots.filter(s => state[s.id]?.fix).map(s => `${s.id}: ${(state[s.id].note || '').trim().replace(/\s*\n\s*/g, ' ') || '(no note)'}`);
+  if (!lines.length) { toast('Nothing flagged yet'); return; }
+  const text = lines.join('\n');
+  try { await navigator.clipboard.writeText(text); toast(`Copied ${lines.length}`); }
+  catch (e) {
+    const f = document.getElementById('copy-fallback'); f.value = text; f.select();
+    try { document.execCommand('copy'); toast(`Copied ${lines.length}`); } catch (e2) { toast('Copy failed'); }
+  }
+});
+
+let armed = false;
+document.getElementById('clear').addEventListener('click', e => {
+  if (!armed) { armed = true; e.target.textContent = 'Click again to clear'; setTimeout(() => { armed = false; e.target.textContent = 'Clear all'; }, 3000); return; }
+  state = {}; save(); document.getElementById('list').replaceChildren(); render(); armed = false; e.target.textContent = 'Clear all'; toast('Cleared');
+});
+
+const only = document.getElementById('only-flagged');
+only.addEventListener('change', () => document.body.classList.toggle('only-flagged', only.checked));
+
+render();
+</script>
+</body>
+</html>

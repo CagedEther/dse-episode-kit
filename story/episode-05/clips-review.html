@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E05 Clips Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: the stills review ledger, with the clip on the left and its motion prompt on the right. Ink on paper. */
+:root {
+  --paper: #fbfaf7;
+  --ink: #111111;
+  --muted: #5d5c58;
+  --rule: #d9d7d0;
+  --wash: #f0eee8;
+  --flag: #111111;
+  --flag-ink: #fbfaf7;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121211; --ink: #ecebe6; --muted: #a09e97; --rule: #33322f; --wash: #1c1c1a; --flag: #ecebe6; --flag-ink: #121211;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121211; --ink: #ecebe6; --muted: #a09e97; --rule: #33322f; --wash: #1c1c1a; --flag: #ecebe6; --flag-ink: #121211;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 1100px; margin: 0 auto; padding-inline: 20px; padding-block: 0 64px; }
+
+.bar { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--ink); }
+.bar-in { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.bar h1 { font: 600 17px/1.2 var(--sans); margin: 0; letter-spacing: 0.01em; }
+.bar .meta { font: 13px var(--mono); color: var(--muted); }
+.bar .spacer { flex: 1; }
+.bar label { font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+button { font: 500 13px var(--sans); background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 8px 14px; border-radius: 3px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--ink); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, .still:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.toast { font: 13px var(--mono); color: var(--muted); min-width: 10ch; }
+
+.intro { max-width: 68ch; color: var(--muted); padding-block: 22px 4px; margin: 0; }
+
+.scene { display: flex; align-items: baseline; gap: 14px; margin: 40px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.scene h2 { font: 600 13px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+.scene span { font: italic 15px var(--serif); color: var(--muted); }
+
+.shot { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+.shot.flagged { box-shadow: inset 4px 0 0 var(--flag); padding-left: 16px; }
+.still { display: block; padding: 0; border: 1px solid var(--rule); background: var(--wash); cursor: zoom-in; width: 100%; aspect-ratio: 9 / 16; max-width: 100%; overflow: hidden; border-radius: 2px; }
+.still img, .still video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.still { cursor: default; }
+.still .missing { display: grid; place-items: center; height: 100%; font: 12px var(--mono); color: var(--muted); padding: 12px; text-align: center; }
+
+.body { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.head .id { font: 600 16px var(--mono); }
+.head .time { font: 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 12px var(--mono); border: 1px solid var(--rule); padding: 1px 8px; border-radius: 999px; color: var(--muted); }
+.label { font: 500 11px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.guide { margin: 0; max-width: 68ch; }
+.vo { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.vo blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--ink); font: 16px/1.55 var(--serif); max-width: 68ch; }
+.vo .ts { font: 12px var(--mono); color: var(--muted); display: block; margin-bottom: 2px; }
+.vo .none { color: var(--muted); font-style: italic; }
+details { border-top: 1px dashed var(--rule); padding-top: 8px; }
+summary { cursor: pointer; font: 500 12px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+details p { margin: 8px 0 0; font: 13px/1.6 var(--mono); max-width: 80ch; overflow-wrap: anywhere; }
+
+.fix { display: flex; flex-direction: column; gap: 8px; background: var(--wash); padding: 12px; border-radius: 3px; }
+.fix label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 14px; cursor: pointer; width: fit-content; }
+.fix input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--ink); }
+.fix textarea { width: 100%; min-height: 64px; resize: vertical; font: 14px/1.5 var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 8px 10px; }
+
+dialog { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; }
+dialog::backdrop { background: rgba(0,0,0,0.85); }
+dialog img { display: block; max-width: 96vw; max-height: 90vh; width: auto; height: auto; }
+dialog .cap { color: #eee; font: 13px var(--mono); padding: 8px 2px; display: flex; justify-content: space-between; gap: 12px; }
+dialog button { background: #eee; color: #111; border-color: #eee; }
+
+body.only-flagged .shot:not(.flagged) { display: none; }
+body.only-flagged .scene { display: none; }
+
+@media (max-width: 640px) {
+  .shot { grid-template-columns: 1fr; }
+  .still { max-width: 260px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.motion { margin: 0; padding: 10px 14px; border-left: 2px solid var(--ink); background: var(--wash); font: 15px/1.55 var(--serif); max-width: 68ch; }
+.changed { font: 12px var(--mono); color: var(--muted); margin: 6px 0 0; }
+.thumbs { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.thumbs figure { margin: 0; width: 140px; }
+.thumbs img, .thumbs video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border: 1px solid var(--rule); display: block; }
+.thumbs figcaption { font: 12px var(--mono); color: var(--muted); margin-top: 4px; }
+.cut { font: 12px var(--mono); color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <h1>Episode 05 · The Crew · Clips review</h1>
+    <span class="meta" id="meta"></span>
+    <span class="spacer"></span>
+    <label><input type="checkbox" id="only-flagged"> Flagged only</label>
+    <button type="button" id="copy">Copy fix list</button>
+    <button type="button" class="ghost" id="clear">Clear all</button>
+    <span class="toast" id="toast" aria-live="polite"></span>
+  </div>
+</div>
+<div class="wrap">
+  <p class="intro">Each row shows a clip beside the motion prompt that made it, its seed, and the voice-over that plays over it. Clips are generated longer than the cut; the marker under each clip shows where the cut lands. Tick “Needs fix” and say what should change. Your notes stay in this browser. When you’re done, press “Copy fix list” and paste it into the thread.</p>
+  <main id="list"></main>
+  <textarea id="copy-fallback" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;top:0;"></textarea>
+</div>
+<script>
+const DATA = {"scenes": {"SC01": "Opening hook (0:00–0:18)", "SC02": "Setup (0:18–0:33)", "SC03": "Crew reveal (0:33–0:43)", "SC04": "Montage (0:43–1:15)", "SC05": "Turn (1:15–1:35)", "SC06": "Cliffhanger (1:35–1:50)"}, "shots": [{"id": "E05-SC01-SH01", "scene": "SC01", "dur": 6, "framing": "medium shot", "level": "low", "guide": "She sits at the apartment table and jabs one key on her laptop, impatient, as the single assistant builds the site.", "start": 0, "end": 6, "vo": [{"start": 0, "text": "The client's site is due by morning.", "cont": false}, {"start": 3, "text": "Her single assistant tried to do everything at once: map the structure, write every word, choose the style, and critique itself.", "cont": false}], "motion": "The seated woman, in three-quarter view toward the left, jabs one key twice with her index finger, then holds her hand there. Her head stays turned toward the laptop. Locked-off camera, minimal motion.", "original": "The seated woman, in three-quarter view toward the left, jabs one key twice with her index finger, then holds her hand there. Her head stays turned toward the laptop. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC01-SH01.png", "clip": null}, {"id": "E05-SC01-SH02", "scene": "SC01", "dur": 5, "framing": "medium shot", "level": "low", "guide": "One harried assistant (man-cowlick) juggling four jobs at once: a scribbled sheet in one hand, a small empty frame held up to one eye, and a rolled map and a pen floating in the air beside him. Something is always about to fall.", "start": 6, "end": 11, "vo": [{"start": 3, "text": "Her single assistant tried to do everything at once: map the structure, write every word, choose the style, and critique itself.", "cont": true}], "motion": "The young man facing the camera shifts his weight; the floating pen and rolled map bob in the air beside him and the scribbled sheet slips in his hand. His face stays toward the camera. Locked-off camera, limited animation.", "original": "The young man facing the camera shifts his weight; the floating pen and rolled map bob in the air beside him and the scribbled sheet slips in his hand. His face stays toward the camera. Locked-off camera, limited animation.", "gen": 5, "seed": null, "img": "frames/E05-SC01-SH02.png", "clip": null}, {"id": "E05-SC01-SH03", "scene": "SC01", "dur": 4, "framing": "wide, page framing", "level": "low", "guide": "The mess. A web page with real parts (logo, menu, picture, heading, paragraphs, cards, the button) all out of place: elements overlap, the picture is cropped off the edge, lines run off the page, and the button is buried under a card. Blocks shuffle in limited-animation steps.", "start": 11, "end": 15, "vo": [{"start": 3, "text": "Her single assistant tried to do everything at once: map the structure, write every word, choose the style, and critique itself.", "cont": true}, {"start": 13, "text": "The result was scattered, weak, and flat.", "cont": false}], "motion": "The out-of-place page elements jitter and shuffle in two or three hard stepped jumps, colliding in new positions. The browser outline holds exactly in place. Locked-off camera, limited animation.", "original": "The out-of-place page elements jitter and shuffle in two or three hard stepped jumps, colliding in new positions. The browser outline holds exactly in place. Locked-off camera, limited animation.", "gen": 5, "seed": null, "img": "frames/E05-SC01-SH03.png", "clip": null}, {"id": "E05-SC01-SH04", "scene": "SC01", "dur": 3, "framing": "close-up", "level": "low", "guide": "Close on her face, frustrated: brow gathered, fingers scratching through her hair. Lands on \"She closed the draft.\"", "start": 15, "end": 18, "vo": [{"start": 13, "text": "The result was scattered, weak, and flat.", "cont": true}, {"start": 16, "text": "She closed the draft.", "cont": false}], "motion": "The woman in three-quarter view toward the left scratches the top of her head, her fingers moving slightly back and forth through her hair. Her brow stays furrowed, her mouth stays a closed line, and her gaze stays off frame to the left. Locked-off camera, minimal motion.", "original": "The woman in three-quarter view toward the left scratches the top of her head, her fingers moving slightly back and forth through her hair. Her brow stays furrowed, her mouth stays a closed line, and her gaze stays off frame to the left. Locked-off camera, minimal motion.", "gen": 5, "seed": null, "img": "frames/E05-SC01-SH04.png", "clip": null}, {"id": "E05-SC02-SH05", "scene": "SC02", "dur": 8, "framing": "overhead tabletop", "level": "low", "guide": "The handler's moment: her hands spread four blank folders across the table in a fan. No writing on them.", "start": 18, "end": 26, "vo": [{"start": 18, "text": "Every spy drama has the quiet moment where the handler spreads files across the table.", "cont": false}, {"start": 23, "text": "Nobody sends one person on a five-part heist.", "cont": false}], "motion": "The two hands slide the four blank folders apart into a fan across the table, then lift away. The table holds still. Locked-off overhead camera, minimal motion.", "original": "The two hands slide the four blank folders apart into a fan across the table, then lift away. The table holds still. Locked-off overhead camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC02-SH05.png", "clip": null}, {"id": "E05-SC02-SH06", "scene": "SC02", "dur": 7, "framing": "medium shot", "level": "low", "guide": "She sits at the apartment table looking down at the four folders, deciding.", "start": 26, "end": 33, "vo": [{"start": 26, "text": "You bring in the sniper who tracks the entire field.", "cont": false}, {"start": 29, "text": "The one who cracks the safe.", "cont": false}, {"start": 31, "text": "The one who walks past the guard.", "cont": false}], "motion": "The seated woman in the black vest, in three-quarter view toward the left, lowers her gaze across the four folders one by one. Her shoulders and hands hold still. Locked-off camera, minimal motion.", "original": "The seated woman in the black vest, in three-quarter view toward the left, lowers her gaze across the four folders one by one. Her shoulders and hands hold still. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC02-SH06.png", "clip": null}, {"id": "E05-SC03-SH07", "scene": "SC03", "dur": 10, "framing": "medium shot", "level": "low", "guide": "She stands at center on empty paper. Four round bubbles sit around her, each holding one agent's head-and-shoulders portrait (Architect top left, Copywriter top right, Designer bottom left, Evaluator bottom right), with a clear band of empty paper under each bubble for a name added in post. Timing note: in the edit the bubbles are revealed one at a time with mask wipes, starting on \"a specialist\" and finishing on \"four sub-agents\".", "start": 33, "end": 43, "vo": [{"start": 33, "text": "When work grows complex, you break it apart and assign each piece to a specialist.", "cont": false}, {"start": 38, "text": "She gathers four sub-agents.", "cont": false}], "motion": "The woman at the center, facing the camera, stands still and blinks once slowly, her mouth a single closed line. The four portraits hold their faces still inside the bubbles, each mouth a closed line. Locked-off camera, minimal motion.", "original": "The woman at the center, facing the camera, stands still and blinks once slowly, her mouth a single closed line. The four portraits hold their faces still inside the bubbles, each mouth a closed line. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC03-SH07.png", "clip": null}, {"id": "E05-SC04-SH08", "scene": "SC04", "dur": 8, "framing": "medium shot", "level": "low", "guide": "The Architect draws the map: open-line rectangles for rooms on a large sheet, then one unbroken solid black line threading through them to the button.", "start": 43, "end": 51, "vo": [{"start": 43, "text": "The Architect maps the territory.", "cont": false}, {"start": 45, "text": "Every room, every route, and the single path a visitor must take.", "cont": false}], "motion": "The Architect, in three-quarter view toward the right, draws the solid black line steadily through the rooms toward the small black button. Her head and shoulders hold steady. Locked-off camera, minimal motion.", "original": "The Architect, in three-quarter view toward the right, draws the solid black line steadily through the rooms toward the small black button. Her head and shoulders hold steady. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC04-SH08.png", "clip": null}, {"id": "E05-SC04-SH09", "scene": "SC04", "dur": 8, "framing": "medium shot", "level": "low", "guide": "The Copywriter fills the empty rooms on that same map with neat ruled ink lines, her ink-black fingertips moving inside the walls and never over them.", "start": 51, "end": 59, "vo": [{"start": 51, "text": "The Copywriter fills the rooms.", "cont": false}, {"start": 54, "text": "She stays strictly inside the lines the Architect drew.", "cont": false}], "motion": "The Copywriter, in three-quarter view toward the left, moves her ink-black fingertips across one room as ruled lines appear inside its walls. Her head stays bowed over the map. Locked-off camera, minimal motion.", "original": "The Copywriter, in three-quarter view toward the left, moves her ink-black fingertips across one room as ruled lines appear inside its walls. Her head stays bowed over the map. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC04-SH09.png", "clip": null}, {"id": "E05-SC04-SH10", "scene": "SC04", "dur": 8, "framing": "medium shot", "level": "low", "guide": "The Designer slides one solid black block across a page in small steps until the composition balances, then lets go.", "start": 59, "end": 67, "vo": [{"start": 59, "text": "The Designer directs the eye, balancing weight and space.", "cont": false}], "motion": "The Designer, in three-quarter view toward the right, slides the black block a short distance in two small steps, pauses, and lifts his hand away as the page settles. Locked-off camera, minimal motion.", "original": "The Designer, in three-quarter view toward the right, slides the black block a short distance in two small steps, pauses, and lifts his hand away as the page settles. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC04-SH10.png", "clip": null}, {"id": "E05-SC04-SH11", "scene": "SC04", "dur": 8, "framing": "wide shot", "level": "low", "guide": "The Evaluator, small in frame, walks along the path across a page laid flat like a floor, a stranger reading it for the first time, and stops where the path breaks off between crowded blocks.", "start": 67, "end": 75, "vo": [{"start": 67, "text": "And the Evaluator builds nothing.", "cont": false}, {"start": 70, "text": "She arrives as a total stranger, testing every seam for weakness.", "cont": false}], "motion": "The small figure of the Evaluator walks along the black path across the page and comes to a stop where the path breaks off, then lowers her head toward the gap. Locked-off high camera, minimal motion.", "original": "The small figure of the Evaluator walks along the black path across the page and comes to a stop where the path breaks off, then lowers her head toward the gap. Locked-off high camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC04-SH11.png", "clip": null}, {"id": "E05-SC05-SH12", "scene": "SC05", "dur": 6, "framing": "wide, page framing", "level": "low", "guide": "The midnight page, clean: the same page parts as SH03, now aligned and balanced. It is beautiful, and the button is tiny, pushed into the bottom corner where the eye never goes.", "start": 75, "end": 81, "vo": [{"start": 75, "text": "By midnight, the system delivers.", "cont": false}, {"start": 78, "text": "But the Evaluator flags the home page.", "cont": false}], "motion": "The clean page holds perfectly still. A slow, slight push in toward the small button in the bottom corner. Minimal motion.", "original": "The clean page holds perfectly still. A slow, slight push in toward the small button in the bottom corner. Minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC05-SH12.png", "clip": null}, {"id": "E05-SC05-SH13", "scene": "SC05", "dur": 5, "framing": "medium wide shot", "level": "low", "guide": "The Designer and the Evaluator stand at one board holding the page. The Designer points at the big picture; the Evaluator points at the small button.", "start": 81, "end": 86, "vo": [{"start": 81, "text": "The design is striking, yet the essential path is buried.", "cont": false}], "motion": "The Designer and the Evaluator, both facing the board, hold their pointing hands on different parts of the page, then turn their heads toward each other. Locked-off camera, minimal motion.", "original": "The Designer and the Evaluator, both facing the board, hold their pointing hands on different parts of the page, then turn their heads toward each other. Locked-off camera, minimal motion.", "gen": 5, "seed": null, "img": "frames/E05-SC05-SH13.png", "clip": null}, {"id": "E05-SC05-SH14", "scene": "SC05", "dur": 4, "framing": "three-quarter close-up", "level": "low", "guide": "She looks at the page, then nods once. The call is made.", "start": 86, "end": 90, "vo": [{"start": 86, "text": "The crew stalls in deadlock.", "cont": false}, {"start": 88, "text": "Only the handler can decide.", "cont": false}], "motion": "The woman in three-quarter view toward the left holds her gaze, then nods her chin down once, slowly. Her pendant stays steady. Locked-off camera, minimal motion.", "original": "The woman in three-quarter view toward the left holds her gaze, then nods her chin down once, slowly. Her pendant stays steady. Locked-off camera, minimal motion.", "gen": 5, "seed": null, "img": "frames/E05-SC05-SH14.png", "clip": null}, {"id": "E05-SC05-SH15", "scene": "SC05", "dur": 5, "framing": "wide, page framing", "level": "low", "guide": "Same clean page after her call: the button is now larger and sits in the middle under the heading, where the eye lands first. Lands on \"She restores the path and sends it back.\"", "start": 90, "end": 95, "vo": [{"start": 88, "text": "Only the handler can decide.", "cont": true}, {"start": 91, "text": "She restores the path and sends it back.", "cont": false}], "motion": "The black button slides up from the corner to the middle of the page and grows to its new size, and the page settles. The browser outline holds still. Locked-off camera, limited animation.", "original": "The black button slides up from the corner to the middle of the page and grows to its new size, and the page settles. The browser outline holds still. Locked-off camera, limited animation.", "gen": 5, "seed": null, "img": "frames/E05-SC05-SH15.png", "clip": null}, {"id": "E05-SC06-SH16", "scene": "SC06", "dur": 5, "framing": "wide shot", "level": "low", "guide": "The four agents in a line pass pages hand to hand down to the right, faster and faster.", "start": 95, "end": 100, "vo": [{"start": 95, "text": "The machine roars alive.", "cont": false}, {"start": 96, "text": "The specialists take the rhythm and accelerate.", "cont": false}, {"start": 99, "text": "Within an hour, thirty pages queue up on her desk.", "cont": false}], "motion": "The four figures, all facing right, pass the sheets hand to hand down the line, faster with each pass. Their feet stay planted. Locked-off camera, limited animation.", "original": "The four figures, all facing right, pass the sheets hand to hand down the line, faster with each pass. Their feet stay planted. Locked-off camera, limited animation.", "gen": 5, "seed": null, "img": "frames/E05-SC06-SH16.png", "clip": null}, {"id": "E05-SC06-SH17", "scene": "SC06", "dur": 10, "framing": "medium wide shot", "level": "low", "guide": "She sits at her table before one small pile of pages. In motion the pile grows into tall stacks. Hold to the end.", "start": 100, "end": 110, "vo": [{"start": 99, "text": "Within an hour, thirty pages queue up on her desk.", "cont": true}, {"start": 103, "text": "The crew is fast.", "cont": false}, {"start": 104, "text": "She is slow.", "cont": false}, {"start": 106, "text": "The handler who saved the mission is now the one stopping it.", "cont": false}], "motion": "The seated woman facing three-quarter toward the left watches as the small pile of sheets in front of her grows taller and taller, new stacks rising beside it. Her hands and body hold their quiet pose. Locked-off camera, minimal motion.", "original": "The seated woman facing three-quarter toward the left watches as the small pile of sheets in front of her grows taller and taller, new stacks rising beside it. Her hands and body hold their quiet pose. Locked-off camera, minimal motion.", "gen": 10, "seed": null, "img": "frames/E05-SC06-SH17.png", "clip": null}], "total": 110};
+const KEY = "dse-e05-clips-review-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} updateMeta(); }
+const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+
+function updateMeta() {
+  const flagged = DATA.shots.filter(s => state[s.id]?.fix).length;
+  const made = DATA.shots.filter(s => s.clip).length;
+  document.getElementById('meta').textContent = `${made} of ${DATA.shots.length} clips · ${fmt(DATA.total)} · ${flagged} flagged`;
+}
+
+function video(src, poster, cut) {
+  const v = el('video'); v.src = src; v.poster = poster; v.controls = true; v.loop = true; v.muted = true; v.playsInline = true; v.preload = 'metadata';
+  if (cut) v.addEventListener('timeupdate', () => { if (v.dataset.cut === '1' && v.currentTime >= cut) v.currentTime = 0; });
+  return v;
+}
+
+function render() {
+  const list = document.getElementById('list');
+  let scene = null;
+  for (const s of DATA.shots) {
+    if (s.scene !== scene) {
+      scene = s.scene;
+      const h = el('div', 'scene');
+      h.append(el('h2', null, scene), el('span', null, DATA.scenes[scene] || ''));
+      list.append(h);
+    }
+    const st = state[s.id] || (state[s.id] = { fix: false, note: '' });
+    const row = el('section', 'shot' + (st.fix ? ' flagged' : ''));
+    row.id = s.id;
+
+    const left = el('div');
+    const box = el('div', 'still');
+    let v = null;
+    if (s.clip) { v = video(s.clip, s.img, s.dur); v.dataset.cut = '1'; box.append(v); }
+    else { const img = new Image(); img.src = s.img; img.alt = s.id + ' still'; box.append(img); }
+    left.append(box);
+    if (v) {
+      const lab = el('label', 'cut'); const cb = el('input'); cb.type = 'checkbox'; cb.checked = true;
+      cb.addEventListener('change', () => { v.dataset.cut = cb.checked ? '1' : '0'; });
+      lab.append(cb, document.createTextNode(` Loop the cut (${s.dur}s of ${s.gen}s)`));
+      left.append(lab);
+    } else {
+      left.append(el('p', 'cut', 'No clip yet. Showing the still.'));
+    }
+
+    const body = el('div', 'body');
+    const head = el('div', 'head');
+    head.append(el('span', 'id', s.id), el('span', 'time', `${fmt(s.start)}–${fmt(s.end)}`));
+    const chips = el('div', 'chips');
+    chips.append(el('span', 'chip', `cut ${s.dur}s`), el('span', 'chip', `generated ${s.gen}s`), el('span', 'chip', 'motion: ' + s.level.replace('_', ' ')));
+    if (s.seed != null) chips.append(el('span', 'chip', 'seed ' + s.seed));
+    head.append(chips);
+
+    const m = el('div'); m.append(el('p', 'label', 'Motion prompt'), el('p', 'motion', s.motion || 'None.'));
+    if (s.original && s.original !== s.motion) {
+      const d = el('details'); d.append(el('summary', null, 'Line in motion-prompts.json'), el('p', null, s.original));
+      m.append(el('p', 'changed', 'This clip used a corrected line, not the one in motion-prompts.json.'), d);
+    }
+
+    const g = el('div'); g.append(el('p', 'label', 'Visual guidance'), el('p', 'guide', s.guide));
+
+    const vb = el('div'); vb.append(el('p', 'label', 'Voice-over'));
+    const vo = el('div', 'vo');
+    if (!s.vo.length) vo.append(el('p', 'none', 'No voice-over over this shot.'));
+    for (const line of s.vo) {
+      const q = el('blockquote');
+      q.append(el('span', 'ts', `≈${fmt(line.start)}${line.cont ? ' · starts in the previous shot' : ''}`), document.createTextNode(line.text));
+      vo.append(q);
+    }
+    vb.append(vo);
+
+    const parts = [head, m, g, vb];
+    if (s.previous || s.clip) {
+      const dc = el('details'); dc.append(el('summary', null, s.previous ? 'Still and earlier take' : 'Still'));
+      const th = el('div', 'thumbs');
+      const f1 = el('figure'); const im = new Image(); im.src = s.img; im.alt = s.id + ' still'; im.loading = 'lazy'; f1.append(im, el('figcaption', null, 'Still (first frame)')); th.append(f1);
+      if (s.previous) { const f2 = el('figure'); f2.append(video(s.previous.clip, s.img), el('figcaption', null, 'Earlier take, old line')); th.append(f2); }
+      dc.append(th);
+      if (s.previous) dc.append(el('p', null, 'Earlier line: ' + s.previous.motion));
+      parts.push(dc);
+    }
+
+    const fix = el('div', 'fix');
+    const lab = el('label'); const cb = el('input'); cb.type = 'checkbox'; cb.id = 'fix-' + s.id; cb.checked = st.fix;
+    lab.htmlFor = cb.id; lab.append(cb, document.createTextNode('Needs fix'));
+    const ta = el('textarea'); ta.id = 'note-' + s.id; ta.placeholder = 'What should change in this clip or its motion prompt?'; ta.value = st.note;
+    ta.setAttribute('aria-label', 'Fix notes for ' + s.id);
+    cb.addEventListener('change', () => { st.fix = cb.checked; row.classList.toggle('flagged', cb.checked); save(); });
+    ta.addEventListener('input', () => {
+      st.note = ta.value;
+      if (ta.value.trim() && !st.fix) { st.fix = true; cb.checked = true; row.classList.add('flagged'); }
+      save();
+    });
+    fix.append(lab, ta);
+    parts.push(fix);
+
+    body.append(...parts);
+    row.append(left, body);
+    list.append(row);
+  }
+  updateMeta();
+}
+
+function toast(msg) { const t = document.getElementById('toast'); t.textContent = msg; clearTimeout(toast.t); toast.t = setTimeout(() => t.textContent = '', 3000); }
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const lines = DATA.shots.filter(s => state[s.id]?.fix).map(s => `${s.id}${s.seed != null ? ' (seed ' + s.seed + ')' : ''}: ${(state[s.id].note || '').trim().replace(/\s*\n\s*/g, ' ') || '(no note)'}`);
+  if (!lines.length) { toast('Nothing flagged yet'); return; }
+  const text = lines.join('\n');
+  try { await navigator.clipboard.writeText(text); toast(`Copied ${lines.length}`); }
+  catch (e) {
+    const f = document.getElementById('copy-fallback'); f.value = text; f.select();
+    try { document.execCommand('copy'); toast(`Copied ${lines.length}`); } catch (e2) { toast('Copy failed'); }
+  }
+});
+
+let armed = false;
+document.getElementById('clear').addEventListener('click', e => {
+  if (!armed) { armed = true; e.target.textContent = 'Click again to clear'; setTimeout(() => { armed = false; e.target.textContent = 'Clear all'; }, 3000); return; }
+  state = {}; save(); document.getElementById('list').replaceChildren(); render(); armed = false; e.target.textContent = 'Clear all'; toast('Cleared');
+});
+
+const only = document.getElementById('only-flagged');
+only.addEventListener('change', () => document.body.classList.toggle('only-flagged', only.checked));
+
+render();
+</script>
+</body>
+</html>

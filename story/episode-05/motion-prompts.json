@@ -1,0 +1,145 @@
+{
+  "episode": "05",
+  "model": "gen4.5",
+  "ratio": "720:1280",
+  "note": "Runway accepts 5 or 10 seconds. generate_seconds is the API length. edit_seconds is where the cut lands. Motion only: the still already defines the picture. Write what moves and what holds, in positive terms: Runway does not follow negatives, and naming an unwanted motion invites it. State which way each face points.",
+  "style_lock": "Black ink line art on warm cream paper, matching the source image. Faces, clothing, and composition stay consistent throughout.",
+  "shots": [
+    {
+      "id": "E05-SC01-SH01",
+      "frame": "story/episode-05/frames/E05-SC01-SH01.png",
+      "edit_seconds": 6,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The seated woman, in three-quarter view toward the left, jabs one key twice with her index finger, then holds her hand there. Her head stays turned toward the laptop. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC01-SH02",
+      "frame": "story/episode-05/frames/E05-SC01-SH02.png",
+      "edit_seconds": 5,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The young man facing the camera shifts his weight; the floating pen and rolled map bob in the air beside him and the scribbled sheet slips in his hand. His face stays toward the camera. Locked-off camera, limited animation."
+    },
+    {
+      "id": "E05-SC01-SH03",
+      "frame": "story/episode-05/frames/E05-SC01-SH03.png",
+      "edit_seconds": 4,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The out-of-place page elements jitter and shuffle in two or three hard stepped jumps, colliding in new positions. The browser outline holds exactly in place. Locked-off camera, limited animation."
+    },
+    {
+      "id": "E05-SC01-SH04",
+      "frame": "story/episode-05/frames/E05-SC01-SH04.png",
+      "edit_seconds": 3,
+      "generate_seconds": 5,
+      "complexity": "very_low",
+      "motion": "The woman in three-quarter view toward the left scratches the top of her head, her fingers moving slightly back and forth through her hair. Her brow stays furrowed, her mouth stays a closed line, and her gaze stays off frame to the left. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC02-SH05",
+      "frame": "story/episode-05/frames/E05-SC02-SH05.png",
+      "edit_seconds": 8,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The two hands slide the four blank folders apart into a fan across the table, then lift away. The table holds still. Locked-off overhead camera, minimal motion."
+    },
+    {
+      "id": "E05-SC02-SH06",
+      "frame": "story/episode-05/frames/E05-SC02-SH06.png",
+      "edit_seconds": 7,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The seated woman in the black vest, in three-quarter view toward the left, lowers her gaze across the four folders one by one. Her shoulders and hands hold still. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC03-SH07",
+      "frame": "story/episode-05/frames/E05-SC03-SH07.png",
+      "edit_seconds": 10,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The woman at the center, facing the camera, stands still and blinks once slowly, her mouth a single closed line. The four portraits hold their faces still inside the bubbles, each mouth a closed line. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC04-SH08",
+      "frame": "story/episode-05/frames/E05-SC04-SH08.png",
+      "edit_seconds": 8,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The Architect, in three-quarter view toward the right, draws the solid black line steadily through the rooms toward the small black button. Her head and shoulders hold steady. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC04-SH09",
+      "frame": "story/episode-05/frames/E05-SC04-SH09.png",
+      "edit_seconds": 8,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The Copywriter, in three-quarter view toward the left, moves her ink-black fingertips across one room as ruled lines appear inside its walls. Her head stays bowed over the map. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC04-SH10",
+      "frame": "story/episode-05/frames/E05-SC04-SH10.png",
+      "edit_seconds": 8,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The Designer, in three-quarter view toward the right, slides the black block a short distance in two small steps, pauses, and lifts his hand away as the page settles. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC04-SH11",
+      "frame": "story/episode-05/frames/E05-SC04-SH11.png",
+      "edit_seconds": 8,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The small figure of the Evaluator walks along the black path across the page and comes to a stop where the path breaks off, then lowers her head toward the gap. Locked-off high camera, minimal motion."
+    },
+    {
+      "id": "E05-SC05-SH12",
+      "frame": "story/episode-05/frames/E05-SC05-SH12.png",
+      "edit_seconds": 6,
+      "generate_seconds": 10,
+      "complexity": "very_low",
+      "motion": "The clean page holds perfectly still. A slow, slight push in toward the small button in the bottom corner. Minimal motion."
+    },
+    {
+      "id": "E05-SC05-SH13",
+      "frame": "story/episode-05/frames/E05-SC05-SH13.png",
+      "edit_seconds": 5,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The Designer and the Evaluator, both facing the board, hold their pointing hands on different parts of the page, then turn their heads toward each other. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC05-SH14",
+      "frame": "story/episode-05/frames/E05-SC05-SH14.png",
+      "edit_seconds": 4,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The woman in three-quarter view toward the left holds her gaze, then nods her chin down once, slowly. Her pendant stays steady. Locked-off camera, minimal motion."
+    },
+    {
+      "id": "E05-SC05-SH15",
+      "frame": "story/episode-05/frames/E05-SC05-SH15.png",
+      "edit_seconds": 5,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The black button slides up from the corner to the middle of the page and grows to its new size, and the page settles. The browser outline holds still. Locked-off camera, limited animation."
+    },
+    {
+      "id": "E05-SC06-SH16",
+      "frame": "story/episode-05/frames/E05-SC06-SH16.png",
+      "edit_seconds": 5,
+      "generate_seconds": 5,
+      "complexity": "low",
+      "motion": "The four figures, all facing right, pass the sheets hand to hand down the line, faster with each pass. Their feet stay planted. Locked-off camera, limited animation."
+    },
+    {
+      "id": "E05-SC06-SH17",
+      "frame": "story/episode-05/frames/E05-SC06-SH17.png",
+      "edit_seconds": 10,
+      "generate_seconds": 10,
+      "complexity": "low",
+      "motion": "The seated woman facing three-quarter toward the left watches as the small pile of sheets in front of her grows taller and taller, new stacks rising beside it. Her hands and body hold their quiet pose. Locked-off camera, minimal motion."
+    }
+  ]
+}

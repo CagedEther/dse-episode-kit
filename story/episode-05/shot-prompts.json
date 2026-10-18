@@ -1,0 +1,347 @@
+[
+  {
+    "id": "e05-sc01-sh01",
+    "path": "story/episode-05/frames/E05-SC01-SH01.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "sitting",
+        "note": "Match her face and marks."
+      },
+      {
+        "id": "lead-everyday"
+      },
+      {
+        "id": "apartment"
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In an apartment interior drawn in sparse black ink on warm paper, the South Asian woman in the short black vest sits at her table in three-quarter view toward the left, an open laptop in front of her drawn in open line with its screen facing away from us. Her index finger presses down hard on one key, shoulders tight, impatient. Shoulder-length black hair, one spiral earring. The tall window on the left, a solid black shadow in one corner. No text, no letters on the keys."
+  },
+  {
+    "id": "e05-sc01-sh02",
+    "path": "story/episode-05/frames/E05-SC01-SH02.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "man-cowlick",
+        "plate": "front",
+        "note": "This young man is the single overloaded assistant. Keep his face, the single tuft of hair, and the plain crew-neck shirt."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In black ink on warm paper, a young man about twenty with very short black hair and one tuft standing up stands facing the camera, juggling four jobs at once. He has exactly two arms and two hands: one hand holds a small empty open-line frame up to one eye, the other hand holds a sheet of ink scribbles. A rolled map and a pen float in the air beside him, mid-juggle, not held by anyone. His brow is tight. Empty paper background. No text."
+  },
+  {
+    "id": "e05-sc01-sh03",
+    "path": "story/episode-05/frames/E05-SC01-SH03.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "still-life"
+    ],
+    "entities": [],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A flat, front-on view of one web page drawn front-on inside a thin browser window outline with a top bar, filling most of the frame on warm paper. It has the parts of a real website: a plain solid black circle as the logo at top left, a row of short menu dashes, a large picture block of a simple ink hill, a heading drawn as one thick ink bar, rows of thin ruled lines for paragraphs, three small card boxes, and one small solid black rounded-rectangle web button, the one thing a visitor must press. Everything is out of place: the black circle logo sits in the middle, the menu dashes run down the side at a slant, the picture block is cropped off the right edge, the heading bar overlaps the cards, paragraph lines collide and run off the page, and the button is buried under a card near the bottom. Generous empty paper around the window. Abstract marks only, no letter shapes, no text."
+  },
+  {
+    "id": "e05-sc01-sh04",
+    "path": "story/episode-05/frames/E05-SC01-SH04.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "brush-face"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "three-quarter",
+        "note": "Match her face and marks."
+      },
+      {
+        "id": "lead",
+        "plate": "expressions",
+        "note": "Use the worried head with the gathered brow as the guide for her expression."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A close-up study in black ink on warm paper of the South Asian woman in three-quarter view toward the left, head and shoulders. She is frustrated: brow gathered, eyes narrowed at something just out of frame, mouth pressed tight, one hand pushing into her hair at the temple. Dark wavy hair with ink curls at the jaw, one spiral earring, a thin chain with a teardrop pendant. Open paper background. No text."
+  },
+  {
+    "id": "e05-sc02-sh05",
+    "path": "story/episode-05/frames/E05-SC02-SH05.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "still-life"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "sitting",
+        "note": "These are her hands. Draw them the way she is drawn here: open ink line on paper-colored skin, no tone or fill."
+      },
+      {
+        "id": "apartment"
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. An overhead view of a plain table in black ink on warm paper. Two simplified hands drawn only as black ink outlines, the skin left exactly the same warm off-white as the paper, the same as every other drawn hand in the series, spread four closed blank folders in a loose fan across the tabletop, like a handler laying out files. The folders are open line with one solid black edge each, and carry no writing. Empty paper fills the rest of the table. No text."
+  },
+  {
+    "id": "e05-sc02-sh06",
+    "path": "story/episode-05/frames/E05-SC02-SH06.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "sitting",
+        "note": "Match her face and marks."
+      },
+      {
+        "id": "lead-everyday"
+      },
+      {
+        "id": "apartment"
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In an apartment interior drawn in sparse black ink on warm paper, the South Asian woman in the short black vest sits at her table in three-quarter view toward the left, looking down at four closed blank folders fanned out in front of her. Shoulder-length black hair, one spiral earring. The tall window on the left, a solid black shadow in one corner. No text."
+  },
+  {
+    "id": "e05-sc03-sh07",
+    "path": "story/episode-05/frames/E05-SC03-SH07.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "figure",
+      "brush-face"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "front",
+        "note": "Match her face and marks."
+      },
+      {
+        "id": "lead-everyday"
+      },
+      {
+        "id": "architect",
+        "plate": "front",
+        "note": "This is the Architect. Keep her short black hair tucked behind the ears and the fine grid lines across one sleeve."
+      },
+      {
+        "id": "copywriter",
+        "plate": "front",
+        "note": "This is the Copywriter. Keep her high black ponytail and the ink-black fingertips on her writing hand."
+      },
+      {
+        "id": "designer",
+        "plate": "front",
+        "note": "This is the Designer. Keep his swept-back black hair and the collar split half solid black, half white."
+      },
+      {
+        "id": "evaluator",
+        "plate": "front",
+        "note": "This is the Evaluator. Keep the narrow-brimmed hat and one eye always in solid black shadow under the brim."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In black ink on warm paper, the South Asian woman in the short black vest stands at the center of the frame, facing the camera, shown from the waist up. Around her sit four round bubbles drawn as clean ink circles, two above her shoulders and two lower at her sides. Each bubble holds one head-and-shoulders portrait: top left the Architect with short tucked hair and a grid-lined sleeve; top right the Copywriter with a high ponytail and ink-black fingertips at her chin; bottom left the Designer with a collar half black, half white; bottom right the Evaluator with a narrow-brimmed hat throwing one eye into solid black shadow. Under each bubble is a clear band of empty paper. No names, no letters, no text."
+  },
+  {
+    "id": "e05-sc04-sh08",
+    "path": "story/episode-05/frames/E05-SC04-SH08.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure",
+      "still-life"
+    ],
+    "entities": [
+      {
+        "id": "architect",
+        "plate": "front",
+        "note": "This is the Architect. Keep her short black hair tucked behind the ears and the fine grid lines across one sleeve."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In black ink on warm paper, the Architect, with short black hair tucked behind her ears and fine grid lines across one sleeve, leans over a large sheet and draws a map of rooms as open-line rectangles. One unbroken solid black line threads through the rooms and ends at one small solid black rounded-rectangle web button, the one thing a visitor must press. Medium shot, three-quarter view toward the right. Empty paper around her. No doorway, no arch, no text."
+  },
+  {
+    "id": "e05-sc04-sh09",
+    "path": "story/episode-05/frames/E05-SC04-SH09.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure",
+      "still-life"
+    ],
+    "entities": [
+      {
+        "id": "copywriter",
+        "plate": "front",
+        "note": "This is the Copywriter. Keep her high black ponytail and the ink-black fingertips on her writing hand."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In black ink on warm paper, the Copywriter, with a high black ponytail, leans over the same map of open-line rooms joined by one solid black path. Her writing hand, with ink-black fingertips, fills one empty room with neat ruled ink lines that stay inside its walls. Several rooms are already filled with lines; others are still empty. Medium shot, three-quarter view toward the left. No letters, no text."
+  },
+  {
+    "id": "e05-sc04-sh10",
+    "path": "story/episode-05/frames/E05-SC04-SH10.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure",
+      "still-life"
+    ],
+    "entities": [
+      {
+        "id": "designer",
+        "plate": "front",
+        "note": "This is the Designer. Keep his swept-back black hair and the collar split half solid black, half white."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In black ink on warm paper, the Designer, with swept-back black hair and a collar split half solid black and half white, stands beside a tall page with one hand resting on a solid black rectangular block, sliding it into place among open-line blocks and calm ruled lines. The page is close to balanced. Medium shot, three-quarter view toward the right. Empty paper around him. No text."
+  },
+  {
+    "id": "e05-sc04-sh11",
+    "path": "story/episode-05/frames/E05-SC04-SH11.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure",
+      "still-life"
+    ],
+    "entities": [
+      {
+        "id": "evaluator",
+        "plate": "front",
+        "note": "This is the Evaluator. Keep the narrow-brimmed hat and one eye always in solid black shadow under the brim."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A high wide view in black ink on warm paper. A huge page lies flat like a floor, with open-line blocks, ruled ink lines, and one solid black path. The Evaluator, small in the frame, in a narrow-brimmed hat with one eye in shadow, has walked along the path and stopped where it breaks off and disappears between crowded blocks. She looks down at the gap. No doorway, no arch, no large black block, no text."
+  },
+  {
+    "id": "e05-sc05-sh12",
+    "path": "story/episode-05/frames/E05-SC05-SH12.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "still-life"
+    ],
+    "entities": [],
+    "prompt": "SUBJECT: a vertical 9:16 frame. The same flat, front-on view of one web page drawn front-on inside a thin browser window outline with a top bar, filling most of the frame on warm paper. It has the parts of a real website: a plain solid black circle as the logo at top left, a row of short menu dashes, a large picture block of a simple ink hill, a heading drawn as one thick ink bar, rows of thin ruled lines for paragraphs, three small card boxes, and one small solid black rounded-rectangle web button, the one thing a visitor must press, now clean and well ordered: the black circle logo at top left, menu dashes in one neat row, the picture block whole and centered, the heading bar above calm rows of ruled lines, three cards aligned. It is beautiful, but the button is tiny and pushed down into the bottom corner where the eye never goes. Generous empty paper. No doorway, no arch, no letter shapes, no text."
+  },
+  {
+    "id": "e05-sc05-sh13",
+    "path": "story/episode-05/frames/E05-SC05-SH13.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "designer",
+        "plate": "front",
+        "note": "This is the Designer. Keep his swept-back black hair and the collar split half solid black, half white."
+      },
+      {
+        "id": "evaluator",
+        "plate": "front",
+        "note": "This is the Evaluator. Keep the narrow-brimmed hat and one eye always in solid black shadow under the brim."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A medium wide shot in black ink on warm paper. The Designer, collar half black and half white, and the Evaluator, narrow-brimmed hat with one eye in shadow, stand side by side in front of one large board pinned with a drawn web page, both looking at it. The Designer points at the big picture block at the top. The Evaluator points at the small black button low in the corner. Empty paper around them. No text."
+  },
+  {
+    "id": "e05-sc05-sh14",
+    "path": "story/episode-05/frames/E05-SC05-SH14.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "brush-face"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "three-quarter",
+        "note": "Match her face and marks."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A close-up study in black ink on warm paper of the South Asian woman in three-quarter view toward the left. Dark wavy hair with ink curls at the jaw, one spiral earring, a thin chain with a teardrop pendant. Her expression is focused and settled, a decision being made. Open paper background. No text."
+  },
+  {
+    "id": "e05-sc05-sh15",
+    "path": "story/episode-05/frames/E05-SC05-SH15.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "still-life"
+    ],
+    "entities": [],
+    "prompt": "SUBJECT: a vertical 9:16 frame. The same flat, front-on view of the clean web page, same framing and same layout: the black circle logo, neat menu dashes, picture block, heading bar, ruled lines, three aligned cards. One change: the solid black rounded-rectangle button is now larger and sits in the middle of the page right under the heading, where the eye lands first, with one short solid black line leading to it. Generous empty paper. No doorway, no arch, no letter shapes, no text."
+  },
+  {
+    "id": "e05-sc06-sh16",
+    "path": "story/episode-05/frames/E05-SC06-SH16.png",
+    "aspect_ratio": "9:16",
+    "lead": false,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "architect",
+        "plate": "front",
+        "note": "This is the Architect. Keep her short black hair tucked behind the ears and the fine grid lines across one sleeve."
+      },
+      {
+        "id": "copywriter",
+        "plate": "front",
+        "note": "This is the Copywriter. Keep her high black ponytail and the ink-black fingertips on her writing hand."
+      },
+      {
+        "id": "designer",
+        "plate": "front",
+        "note": "This is the Designer. Keep his swept-back black hair and the collar split half solid black, half white."
+      },
+      {
+        "id": "evaluator",
+        "plate": "front",
+        "note": "This is the Evaluator. Keep the narrow-brimmed hat and one eye always in solid black shadow under the brim."
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. A wide shot in black ink on warm paper. The four crew members stand in a single line from left to right: the Architect with the grid-lined sleeve, the Copywriter with the high ponytail, the Designer with the split collar, and the Evaluator in the narrow-brimmed hat. Each passes a blank sheet of paper to the next, all facing right, sheets in motion between their hands. Empty paper around them. No text."
+  },
+  {
+    "id": "e05-sc06-sh17",
+    "path": "story/episode-05/frames/E05-SC06-SH17.png",
+    "aspect_ratio": "9:16",
+    "lead": true,
+    "style_refs": [
+      "figure"
+    ],
+    "entities": [
+      {
+        "id": "lead",
+        "plate": "sitting",
+        "note": "Match her face and marks."
+      },
+      {
+        "id": "lead-everyday"
+      },
+      {
+        "id": "apartment"
+      }
+    ],
+    "prompt": "SUBJECT: a vertical 9:16 frame. In clean black ink on warm paper, the South Asian woman in the black vest sits upright at her apartment table in three-quarter view toward the left. In front of her lies one small, neat pile of blank paper sheets, only a few sheets high, with plenty of empty tabletop around it. The tall window and dark corner shadow frame the scene. No text."
+  }
+]
